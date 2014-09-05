@@ -47,7 +47,16 @@ class Module implements ModuleDefinitionInterface {
             return $view;
         };
 
-        $di->set('dispatcher', function() {
+        $di->set('dispatcher', function() use ($di) {
+   //Obtain the standard eventsManager from the DI
+    $eventsManager = $di->getShared('eventsManager');
+
+    //Instantiate the Security plugin
+    $security = new Security($di);
+
+    //Listen for events produced in the dispatcher using the Security plugin
+    $eventsManager->attach('dispatch', $security);
+
             $dispatcher = new Dispatcher();
             $dispatcher->setDefaultNamespace('Lrhost\Painel\Controllers');
             return $dispatcher;
