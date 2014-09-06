@@ -3,10 +3,10 @@
 namespace Lrhost\Painel;
 
 use Phalcon\Loader,
-Phalcon\Mvc\Dispatcher;
-use Phalcon\Mvc\View;
-use Phalcon\Db\Adapter\Pdo\Mysql as DbAdapter;
-use Phalcon\Mvc\ModuleDefinitionInterface;
+Phalcon\Mvc\Dispatcher,
+Phalcon\Mvc\View,
+Phalcon\Db\Adapter\Pdo\Mysql as DbAdapter,
+Phalcon\Mvc\ModuleDefinitionInterface;
 
 class Module implements ModuleDefinitionInterface {
 
@@ -20,6 +20,7 @@ class Module implements ModuleDefinitionInterface {
         $loader->registerNamespaces(array(
             'Lrhost\Painel\Controllers' => __DIR__ . '/controllers/',
             'Lrhost\Painel\Models' => __DIR__ . '/models/',
+            'Lrhost\Painel\Plugins' => __DIR__ . '/plugins/',
         ));
 
         $loader->register();
@@ -48,14 +49,14 @@ class Module implements ModuleDefinitionInterface {
         };
 
         $di->set('dispatcher', function() use ($di) {
-   //Obtain the standard eventsManager from the DI
-    $eventsManager = $di->getShared('eventsManager');
+           //Obtain the standard eventsManager from the DI
+            //$eventsManager = $di->getShared('eventsManager');
 
-    //Instantiate the Security plugin
-    $security = new Security($di);
+            //Instantiate the Security plugin
+            //$security = new Security($di);
 
-    //Listen for events produced in the dispatcher using the Security plugin
-    $eventsManager->attach('dispatch', $security);
+            //Listen for events produced in the dispatcher using the Security plugin
+            //$eventsManager->attach('dispatch', $security);
 
             $dispatcher = new Dispatcher();
             $dispatcher->setDefaultNamespace('Lrhost\Painel\Controllers');

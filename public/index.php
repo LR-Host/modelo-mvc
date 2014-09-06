@@ -10,7 +10,13 @@ try {
      * Include services
      */
     require __DIR__ . '/../config/services.php';
+    $loader = new \Phalcon\Loader();
 
+    $loader->registerDirs(
+        array(
+            __DIR__ . '/../apps/plugins',
+        )
+    )->register();
     /**
      * Handle the request
      */

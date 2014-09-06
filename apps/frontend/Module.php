@@ -3,10 +3,10 @@
 namespace Lrhost\Frontend;
 
 use Phalcon\Loader,
-Phalcon\Mvc\Dispatcher;
-use Phalcon\Mvc\View;
-use Phalcon\Db\Adapter\Pdo\Mysql as DbAdapter;
-use Phalcon\Mvc\ModuleDefinitionInterface;
+Phalcon\Mvc\Dispatcher,
+Phalcon\Mvc\View,
+Phalcon\Db\Adapter\Pdo\Mysql as DbAdapter,
+Phalcon\Mvc\ModuleDefinitionInterface;
 
 
 class Module implements ModuleDefinitionInterface

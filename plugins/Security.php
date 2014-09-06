@@ -1,4 +1,5 @@
 <?php
+namespace Lrhost\Painel\Plugins;
 
 use Phalcon\Events\Event,
         Phalcon\Mvc\User\Plugin,
